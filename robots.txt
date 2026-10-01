@@ -1,0 +1,25 @@
+# Suzanne Scott Skin Care — https://suzannescottskincare.com/
+# Every search engine and AI assistant may crawl the whole site.
+
+User-agent: *
+Allow: /
+
+# AI search, answer and assistant crawlers, named explicitly so the policy is unambiguous.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: CCBot
+Allow: /
+
+# Plain-text summary for language models: https://suzannescottskincare.com/llms.txt
+Sitemap: https://suzannescottskincare.com/sitemap.xml

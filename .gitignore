@@ -1,0 +1,5 @@
+# Working files that should not be published with the site
+*.pdf
+header.jpeg
+.DS_Store
+.claude/
