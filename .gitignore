@@ -3,3 +3,5 @@
 header.jpeg
 .DS_Store
 .claude/
+.vercel
+.env*
