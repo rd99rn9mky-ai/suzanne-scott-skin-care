@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Direction 1 Variants</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;family=Montserrat:wght@300;400;500&amp;family=Inter:wght@300;400;500&amp;family=Josefin+Sans:wght@300;400&amp;family=Tenor+Sans&amp;family=Lato:wght@300;400&amp;family=Red+Hat+Display:wght@300;400;500&amp;family=Red+Hat+Text:wght@300;400&amp;family=Raleway:wght@300;400;500;600&amp;display=swap">
+<style>
+/* Direction 1 explorations: seven centered treatments of the same page.
+   Palette is the brand's only (ink / white / paper / greys). Each version sets font + layout tokens on body[data-v]. */
+:root {
+  --ink: #141414; --white: #FFFFFF; --paper: #F4F4F2;
+  --grey-700: #4A4A48; --grey-600: #666664; --grey-400: #A6A6A3; --grey-300: #8C8C8A; --rule: #D4D4D0;
+  --glass: rgba(255,255,255,0.72); --glass-border: rgba(20,20,20,0.12);
+  --gutter: clamp(20px, 5vw, 48px);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+h1, h2, h3, p, figure, blockquote, dl, dd, address { margin: 0; }
+address { font-style: normal; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: color .2s, border-color .2s, background-color .2s; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* ---------- Version tokens (defaults = version 1, Jost refined) ---------- */
+body {
+  --f-display: "Jost", Helvetica, sans-serif;
+  --f-body: "Jost", Helvetica, sans-serif;
+  --f-label: "Jost", Helvetica, sans-serif;
+  --wm-font: var(--f-display); --wm-size: clamp(21px, 1rem + 2.6vw, 52px); --wm-track: clamp(4px, .62vw, 9px); --wm-weight: 400; --wm-style: normal;
+  --tag-font: var(--f-display); --tag-size: clamp(32px, 1.6rem + 2vw, 52px); --tag-weight: 400; --tag-style: normal; --tag-track: 0;
+  --h-font: var(--f-display); --h-size: clamp(32px, 2.2rem + .9vw, 44px); --h-weight: 400; --h-style: normal; --h-case: none; --h-track: .25px;
+  --t-font: var(--f-display); --t-size: clamp(24px, 1.4rem + .4vw, 28px); --t-weight: 400; --t-track: 1px; --t-style: normal;
+  --label-size: 13px; --label-weight: 500; --label-track: 4px;
+  --body-size: clamp(17px, 1.05rem + .2vw, 19px); --body-weight: 300; --body-lh: 1.65;
+  --q-font: var(--f-display); --q-size: clamp(22px, 1.1rem + 1.3vw, 32px); --q-weight: 300; --q-style: normal;
+  --btn-font: var(--f-label); --btn-radius: 16px; --card-radius: 20px;
+  --pad: clamp(72px, 9vw, 120px);
+  --hero-h: clamp(440px, 52vw, 740px);
+  margin: 0; overflow-x: hidden;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-weight: var(--body-weight); font-size: var(--body-size); line-height: var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Section color themes. Every section reads --bg/--fg/etc; versions flip sections to white or dark. */
+.sec, .top, .foot { --bg: var(--paper); --fg: var(--ink); --muted: var(--grey-600); --text: var(--grey-700); --line: var(--rule); --strong: var(--ink); --card: var(--white); --card-line: var(--rule);
+  background: var(--bg); color: var(--fg); }
+
+/* ---------- Shared type ---------- */
+.label { font-family: var(--f-label); font-size: var(--label-size); font-weight: var(--label-weight); letter-spacing: var(--label-track); text-transform: uppercase; line-height: 1.5; color: var(--muted); }
+.h2 { font-family: var(--h-font); font-size: var(--h-size); font-weight: var(--h-weight); font-style: var(--h-style); text-transform: var(--h-case); letter-spacing: var(--h-track); line-height: 1.15; text-wrap: balance; }
+.h3 { font-family: var(--t-font); font-size: var(--t-size); font-weight: var(--t-weight); font-style: var(--t-style); letter-spacing: var(--t-track); line-height: 1.2; }
+.text { color: var(--text); max-width: 680px; margin-inline: auto; }
+.text p + p { margin-top: 1.1em; }
+.btn-text { font-family: var(--btn-font); font-size: 14px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; line-height: 1.3; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 16px 40px 16px 44px; border: 1px solid var(--strong); border-radius: var(--btn-radius); color: var(--fg); text-decoration: none; text-align: center; background: transparent; }
+.btn:hover { color: var(--muted); border-color: var(--muted); }
+.link { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 7px; }
+
+/* ---------- Layout ---------- */
+.wrap { width: min(1040px, 100% - 2 * var(--gutter)); margin-inline: auto; text-align: center; }
+.sec { padding-block: var(--pad); }
+.stack { display: grid; justify-items: center; gap: 16px; }
+.sec-head { display: grid; justify-items: center; gap: 16px; margin-bottom: clamp(40px, 5vw, 64px); }
+
+/* Header + hero */
+.top { position: relative; }
+.hdr { position: relative; z-index: 5; text-align: center; padding: clamp(20px, 3vw, 36px) var(--gutter) 6px; background: var(--bg); }
+.wm { display: inline-block; font-family: var(--wm-font); font-size: var(--wm-size); font-weight: var(--wm-weight); font-style: var(--wm-style); letter-spacing: var(--wm-track); margin-right: calc(-1 * var(--wm-track)); text-transform: uppercase; line-height: 1.05; text-decoration: none; }
+.wm span { white-space: nowrap; }
+.nav { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 48px; margin-top: clamp(12px, 1.8vw, 22px); padding-top: 6px; border-top: 1px solid var(--line); }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--f-label); font-size: 13px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.nav a:hover, .wm:hover { color: var(--muted); }
+
+.hero-media { position: relative; height: var(--hero-h); overflow: hidden; background: var(--grey-300); }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 40%; filter: grayscale(1); }
+.cta { position: absolute; left: 50%; bottom: clamp(28px, 5vw, 72px); transform: translateX(-50%); width: min(240px, 100% - 2 * var(--gutter)); padding-inline: 20px;
+  background: var(--glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-color: var(--glass-border); color: var(--ink); }
+.cta:hover { background: var(--white); color: var(--ink); border-color: var(--glass-border); }
+
+/* Intro */
+.tag { font-family: var(--tag-font); font-size: var(--tag-size); font-weight: var(--tag-weight); font-style: var(--tag-style); letter-spacing: var(--tag-track); line-height: 1.15; max-width: 860px; text-wrap: balance; }
+.intro .text { margin-top: 16px; }
+
+/* Services */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 64px 48px; }
+.card { display: grid; justify-items: center; align-content: start; gap: 16px; padding-top: 28px; border-top: 1px solid var(--strong); min-width: 0; }
+.prices { width: min(440px, 100%); margin-top: 12px; border-bottom: 1px solid var(--line); }
+.prices > div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-block: 13px; border-top: 1px solid var(--line); text-align: left; }
+.prices dt { color: var(--text); font-size: .94em; line-height: 1.4; }
+.prices dd { flex: none; letter-spacing: 2px; font-variant-numeric: tabular-nums; }
+
+/* Testimonials */
+.feat { max-width: 980px; margin: 32px auto 0; }
+.feat p { font-family: var(--q-font); font-size: var(--q-size); font-weight: var(--q-weight); font-style: var(--q-style); line-height: 1.5; color: var(--fg); text-wrap: pretty; }
+figcaption { margin-top: 24px; color: var(--muted); }
+.qgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 48px; margin-top: clamp(56px, 8vw, 96px); }
+.qgrid figure { padding-top: 28px; border-top: 1px solid var(--line); min-width: 0; }
+.qgrid p { color: var(--fg); font-size: .92em; }
+
+/* Contact */
+.locs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: clamp(32px, 4vw, 48px); }
+.loc { display: grid; justify-items: center; align-content: start; gap: 18px; padding: clamp(28px, 4vw, 48px); background: var(--card); border: 1px solid var(--card-line); border-radius: var(--card-radius); min-width: 0; }
+.loc .label { color: var(--fg); }
+.loc .text { display: grid; gap: 4px; }
+.loc .days { color: var(--fg); }
+.loc .btn { margin-top: 8px; }
+.cdet { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 32px; margin-top: clamp(48px, 6vw, 72px); padding-top: 32px; border-top: 1px solid var(--line); }
+.cdet > div { display: grid; gap: 8px; justify-items: center; }
+.cdet dd a { display: inline-flex; align-items: center; min-height: 44px; }
+.cdet .muted { display: block; color: var(--muted); font-size: .88em; overflow-wrap: anywhere; }
+.policy { display: grid; gap: 16px; margin-top: clamp(48px, 6vw, 72px); }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); padding-block: 64px; }
+.foot .wrap { display: grid; justify-items: center; gap: 14px; }
+.fwm { font-family: var(--wm-font); font-size: 18px; letter-spacing: 6px; margin-right: -6px; text-transform: uppercase; line-height: 1.2; }
+.foot p { color: var(--muted); font-size: 15px; }
+.foot a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ---------- Version switcher ---------- */
+.switch { position: fixed; z-index: 50; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); display: flex; align-items: center;
+  background: var(--ink); color: var(--white); border: 1px solid rgba(255,255,255,.22); border-radius: 999px; font-family: "Jost", Helvetica, sans-serif; }
+.switch button { width: 40px; height: 44px; border: 0; background: none; color: var(--grey-400); font: inherit; font-size: 20px; line-height: 1; cursor: pointer; border-radius: 999px; }
+.switch button:hover { color: var(--white); }
+.switch .num { min-width: 18px; text-align: center; font-size: 13px; font-weight: 500; letter-spacing: 1px; color: var(--white); }
+
+/* ======================================================================
+   1 · Jost refined — the current system, fully centered. Floating glass header.
+   ====================================================================== */
+[data-v="1"] .top { --bg: var(--white); padding-top: clamp(112px, 12vw, 160px); }
+[data-v="1"] .hdr { position: absolute; top: clamp(16px, 3.4vw, 48px); left: 50%; transform: translateX(-50%); width: min(1220px, 100% - 2 * clamp(12px, 3vw, 110px));
+  padding: clamp(18px, 2.2vw, 30px) clamp(12px, 3vw, 40px) clamp(4px, 1vw, 12px); background: var(--glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid var(--glass-border); border-radius: 18px; }
+[data-v="1"] .services { --bg: var(--white); }
+[data-v="1"] .testimonials { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); }
+
+/* ======================================================================
+   4 · Architectural sans — Montserrat, wide-tracked caps headlines, alternating black/white bands, boxed grid.
+   ====================================================================== */
+[data-v="4"] { --f-display: "Montserrat", Helvetica, sans-serif; --f-body: "Montserrat", Helvetica, sans-serif; --f-label: "Montserrat", Helvetica, sans-serif;
+  --wm-size: clamp(17px, .8rem + 1.8vw, 34px); --wm-track: clamp(6px, 1vw, 14px); --wm-weight: 300;
+  --tag-size: clamp(22px, 1rem + 1.8vw, 38px); --tag-weight: 300; --tag-track: clamp(2px, .4vw, 6px);
+  --h-size: clamp(22px, 1rem + 1.4vw, 32px); --h-weight: 300; --h-case: uppercase; --h-track: clamp(5px, .7vw, 10px);
+  --t-size: clamp(16px, .9rem + .3vw, 19px); --t-weight: 500; --t-track: 4px;
+  --body-size: clamp(15px, .9rem + .2vw, 17px); --body-lh: 1.85;
+  --label-size: 11px; --label-track: 5px;
+  --q-size: clamp(19px, 1rem + .9vw, 26px); --q-weight: 300;
+  --btn-radius: 0; --card-radius: 0; --hero-h: clamp(460px, 56vw, 800px); }
+[data-v="4"] .top { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --line: var(--grey-700); }
+[data-v="4"] .hdr { padding-block: 22px 4px; }
+[data-v="4"] .h3 { text-transform: uppercase; }
+[data-v="4"] .tag { text-transform: uppercase; }
+[data-v="4"] .cta { border-radius: 0; background: var(--ink); color: var(--paper); border-color: var(--ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-v="4"] .cta:hover { background: var(--grey-700); color: var(--paper); border-color: var(--grey-700); }
+[data-v="4"] .intro, [data-v="4"] .about, [data-v="4"] .contact { --bg: var(--white); }
+[data-v="4"] .services, [data-v="4"] .testimonials, [data-v="4"] .foot { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); --card: transparent; --card-line: var(--grey-700); }
+[data-v="4"] .cards { gap: 0; border: 1px solid var(--grey-700); }
+[data-v="4"] .card { border-top: 0; padding: clamp(32px, 4vw, 56px) clamp(20px, 3vw, 40px); }
+[data-v="4"] .card + .card { border-left: 1px solid var(--grey-700); }
+@media (max-width: 860px) { [data-v="4"] .card + .card { border-left: 0; border-top: 1px solid var(--grey-700); } }
+[data-v="4"] .locs { gap: 0; border: 1px solid var(--ink); }
+[data-v="4"] .loc { border: 0; background: var(--white); }
+[data-v="4"] .loc + .loc { border-left: 1px solid var(--ink); }
+@media (max-width: 820px) { [data-v="4"] .loc + .loc { border-left: 0; border-top: 1px solid var(--ink); } }
+[data-v="4"] .prices dt { font-size: .9em; }
+
+
+/* ======================================================================
+   2 · Swiss — Inter. White page, crisp ink rules, solid ink button, tight light headlines.
+   ====================================================================== */
+[data-v="2"] { --f-display: "Inter", Helvetica, Arial, sans-serif; --f-body: "Inter", Helvetica, Arial, sans-serif; --f-label: "Inter", Helvetica, Arial, sans-serif;
+  --wm-size: clamp(17px, .8rem + 1.3vw, 28px); --wm-track: .32em; --wm-weight: 500;
+  --tag-size: clamp(32px, 1.4rem + 3vw, 64px); --tag-weight: 300; --tag-track: -.025em;
+  --h-size: clamp(36px, 1.5rem + 2.6vw, 60px); --h-weight: 300; --h-track: -.025em;
+  --t-size: clamp(22px, 1.1rem + .6vw, 28px); --t-weight: 400; --t-track: -.01em;
+  --body-size: clamp(16px, .95rem + .2vw, 18px); --body-weight: 300; --body-lh: 1.7;
+  --label-size: 11px; --label-track: .25em;
+  --q-size: clamp(22px, 1.1rem + 1.2vw, 34px); --q-weight: 300;
+  --btn-radius: 0; --card-radius: 0; --hero-h: clamp(460px, 58vw, 820px); }
+[data-v="2"] .top, [data-v="2"] .sec, [data-v="2"] .foot { --bg: var(--white); }
+[data-v="2"] .hdr { padding-block: clamp(20px, 2.6vw, 32px) 0; border-bottom: 1px solid var(--ink); }
+[data-v="2"] .nav { border-top: 0; margin-top: clamp(8px, 1vw, 14px); }
+[data-v="2"] .nav a { font-size: 12px; letter-spacing: .2em; font-weight: 500; }
+[data-v="2"] .btn-text { font-size: 13px; letter-spacing: .2em; }
+[data-v="2"] .cta { background: var(--ink); color: var(--white); border-color: var(--ink); border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-v="2"] .cta:hover { background: var(--grey-700); border-color: var(--grey-700); color: var(--white); }
+[data-v="2"] .sec + .sec > .wrap { border-top: 1px solid var(--ink); padding-top: var(--pad); }
+[data-v="2"] .sec + .sec { padding-top: 0; }
+[data-v="2"] .testimonials { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); padding-top: var(--pad) !important; }
+[data-v="2"] .testimonials > .wrap { border-top: 0 !important; padding-top: 0 !important; }
+[data-v="2"] .testimonials + .sec { padding-top: var(--pad); }
+[data-v="2"] .testimonials + .sec > .wrap { border-top: 0; padding-top: 0; }
+[data-v="2"] .card { border-top: 2px solid var(--ink); }
+[data-v="2"] .loc { border: 1px solid var(--ink); }
+[data-v="2"] .loc .btn { background: var(--ink); color: var(--white); }
+[data-v="2"] .loc .btn:hover { background: var(--grey-700); border-color: var(--grey-700); color: var(--white); }
+[data-v="2"] .foot { border-top: 1px solid var(--ink); }
+
+/* ======================================================================
+   3 · Deco — Josefin Sans. Black masthead framing an inset photo; paper and ink bands; uppercase light headlines.
+   ====================================================================== */
+[data-v="3"] { --f-display: "Josefin Sans", Futura, Helvetica, sans-serif; --f-body: "Josefin Sans", Futura, Helvetica, sans-serif; --f-label: "Josefin Sans", Futura, Helvetica, sans-serif;
+  --wm-size: clamp(22px, 1rem + 2.6vw, 54px); --wm-track: .28em; --wm-weight: 300;
+  --tag-size: clamp(26px, 1.2rem + 2vw, 46px); --tag-weight: 300; --tag-track: .06em;
+  --h-size: clamp(28px, 1.3rem + 1.6vw, 44px); --h-weight: 300; --h-case: uppercase; --h-track: .16em;
+  --t-size: clamp(20px, 1rem + .5vw, 24px); --t-weight: 400; --t-track: .12em;
+  --body-size: clamp(17px, 1rem + .25vw, 19px); --body-weight: 300; --body-lh: 1.7;
+  --label-size: 12px; --label-weight: 400; --label-track: .3em;
+  --q-size: clamp(22px, 1.1rem + 1.2vw, 32px); --q-weight: 300;
+  --btn-radius: 0; --card-radius: 0; --hero-h: auto; }
+[data-v="3"] .top { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --line: var(--grey-700); padding-bottom: clamp(40px, 6vw, 88px); }
+[data-v="3"] .hdr { padding-block: clamp(32px, 5vw, 64px) clamp(20px, 3vw, 40px); }
+[data-v="3"] .nav { border-top: 0; position: relative; padding-top: 14px; }
+[data-v="3"] .nav::before { content: ""; position: absolute; top: 0; left: 50%; width: 80px; transform: translateX(-50%); border-top: 1px solid var(--grey-400); }
+[data-v="3"] .hero-media { width: min(1100px, 100% - 2 * var(--gutter)); margin-inline: auto; background: none; overflow: visible; }
+[data-v="3"] .hero-media img { aspect-ratio: 16 / 9; height: auto; }
+[data-v="3"] .cta { background: var(--ink); color: var(--paper); border-color: var(--grey-400); border-radius: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-v="3"] .cta:hover { background: var(--ink); color: var(--white); border-color: var(--white); }
+[data-v="3"] .h3, [data-v="3"] .tag { text-transform: uppercase; }
+[data-v="3"] .btn-text { letter-spacing: .25em; }
+[data-v="3"] .services, [data-v="3"] .testimonials, [data-v="3"] .foot { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); --card: transparent; --card-line: var(--grey-700); }
+[data-v="3"] .card { border-top: 0; padding-top: 0; }
+[data-v="3"] .idx { display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border: 1px solid var(--grey-700); letter-spacing: .1em; }
+[data-v="3"] .loc { border: 1px solid var(--ink); background: transparent; position: relative; }
+[data-v="3"] .loc::after { content: ""; position: absolute; inset: 8px; border: 1px solid var(--rule); pointer-events: none; }
+[data-v="3"] .loc .btn { position: relative; z-index: 1; }
+
+/* ======================================================================
+   5 · Fashion house — Tenor Sans with Lato. Photo first at full bleed, the name set beneath it like a label.
+   ====================================================================== */
+[data-v="5"] { --f-display: "Tenor Sans", Helvetica, sans-serif; --f-body: "Lato", Helvetica, sans-serif; --f-label: "Tenor Sans", Helvetica, sans-serif;
+  --wm-size: clamp(22px, 1rem + 2.8vw, 58px); --wm-track: .22em; --wm-weight: 400;
+  --tag-size: clamp(28px, 1.3rem + 2.2vw, 50px); --tag-weight: 400; --tag-track: .01em;
+  --h-size: clamp(26px, 1.2rem + 1.6vw, 42px); --h-case: uppercase; --h-track: .14em;
+  --t-size: clamp(20px, 1rem + .5vw, 24px); --t-track: .1em;
+  --body-size: clamp(16px, .95rem + .25vw, 18px); --body-weight: 300; --body-lh: 1.75;
+  --label-size: 12px; --label-weight: 400; --label-track: .3em;
+  --q-size: clamp(22px, 1.1rem + 1.2vw, 32px); --q-weight: 400;
+  --btn-radius: 0; --card-radius: 0; --hero-h: clamp(420px, 46vw, 660px); }
+[data-v="5"] .top { --bg: var(--white); display: flex; flex-direction: column; }
+[data-v="5"] .hdr { order: 2; padding-block: clamp(28px, 4vw, 52px) clamp(8px, 1.4vw, 16px); }
+[data-v="5"] .nav { border-top: 0; margin-top: clamp(14px, 2vw, 24px); }
+[data-v="5"] .nav a { font-size: 12px; letter-spacing: .3em; }
+[data-v="5"] .h3 { text-transform: uppercase; }
+[data-v="5"] .cta { border-radius: 0; }
+[data-v="5"] .intro { --bg: var(--white); padding-top: clamp(32px, 4vw, 56px); }
+[data-v="5"] .services { --bg: var(--paper); }
+[data-v="5"] .about { --bg: var(--white); }
+[data-v="5"] .testimonials { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); }
+[data-v="5"] .card { border-top: 0; padding: clamp(32px, 4vw, 56px) clamp(20px, 3vw, 44px); background: var(--white); }
+[data-v="5"] .loc { border-color: var(--rule); }
+
+/* ======================================================================
+   6 · Spa menu — Red Hat Display with Red Hat Text. Slim white bar, panoramic photo, services set like a printed menu.
+   ====================================================================== */
+[data-v="6"] { --f-display: "Red Hat Display", Helvetica, sans-serif; --f-body: "Red Hat Text", Helvetica, sans-serif; --f-label: "Red Hat Display", Helvetica, sans-serif;
+  --wm-size: clamp(16px, .8rem + 1vw, 24px); --wm-track: .35em; --wm-weight: 500;
+  --tag-size: clamp(30px, 1.3rem + 2.6vw, 58px); --tag-weight: 300; --tag-track: -.01em;
+  --h-size: clamp(32px, 1.4rem + 2vw, 52px); --h-weight: 300; --h-track: -.01em;
+  --t-size: clamp(16px, .9rem + .3vw, 19px); --t-weight: 500; --t-track: .28em;
+  --body-size: clamp(16px, .95rem + .2vw, 18px); --body-weight: 300; --body-lh: 1.7;
+  --label-size: 11px; --label-weight: 500; --label-track: .3em;
+  --q-size: clamp(22px, 1.1rem + 1.2vw, 32px); --q-weight: 300;
+  --btn-radius: 999px; --card-radius: 16px; --hero-h: clamp(300px, 40vw, 580px); }
+[data-v="6"] .top, [data-v="6"] .sec { --bg: var(--white); }
+[data-v="6"] .hdr { padding-block: 18px 0; }
+[data-v="6"] .nav { margin-top: 12px; }
+[data-v="6"] .nav a { font-size: 11px; letter-spacing: .28em; font-weight: 500; }
+[data-v="6"] .hero-media img { object-position: 58% 45%; }
+[data-v="6"] .cta { border-radius: 999px; }
+[data-v="6"] .h3 { text-transform: uppercase; display: flex; align-items: center; gap: 18px; }
+[data-v="6"] .h3::before, [data-v="6"] .h3::after { content: ""; width: 36px; border-top: 1px solid var(--grey-300); }
+[data-v="6"] .policy .h3 { justify-content: center; }
+[data-v="6"] .cards { grid-template-columns: 1fr; gap: 80px; max-width: 640px; margin-inline: auto; }
+[data-v="6"] .card { border-top: 0; padding-top: 0; }
+[data-v="6"] .prices { width: 100%; border-bottom: 0; }
+[data-v="6"] .prices > div { border-top: 0; padding-block: 10px; gap: 12px; }
+[data-v="6"] .prices dt { display: flex; align-items: baseline; gap: 12px; flex: 1; min-width: 0; }
+[data-v="6"] .prices dt::after { content: ""; flex: 1; min-width: 24px; border-bottom: 1px dotted var(--grey-300); }
+[data-v="6"] .about { --bg: var(--paper); }
+[data-v="6"] .testimonials { --bg: var(--paper); border-top: 1px solid var(--rule); }
+[data-v="6"] .about + .testimonials { padding-top: 0; border-top: 0; }
+[data-v="6"] .about + .testimonials .wrap { border-top: 1px solid var(--rule); padding-top: var(--pad); }
+[data-v="6"] .loc { background: var(--paper); border: 0; }
+[data-v="6"] .loc .btn { background: var(--ink); color: var(--white); border-color: var(--ink); }
+[data-v="6"] .loc .btn:hover { background: var(--grey-700); border-color: var(--grey-700); color: var(--white); }
+[data-v="6"] .foot { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --line: var(--ink); }
+
+/* ======================================================================
+   7 · Arch — Raleway. Paper page; the photo and the service cards framed as arched windows.
+   ====================================================================== */
+[data-v="7"] { --f-display: "Raleway", Helvetica, sans-serif; --f-body: "Raleway", Helvetica, sans-serif; --f-label: "Raleway", Helvetica, sans-serif;
+  --wm-size: clamp(19px, .9rem + 1.8vw, 40px); --wm-track: .38em; --wm-weight: 300;
+  --tag-size: clamp(30px, 1.3rem + 2.4vw, 54px); --tag-weight: 300;
+  --h-size: clamp(32px, 1.4rem + 2vw, 52px); --h-weight: 300;
+  --t-size: clamp(22px, 1.1rem + .6vw, 28px); --t-weight: 400; --t-track: .02em;
+  --body-size: clamp(16px, .95rem + .25vw, 18px); --body-weight: 400; --body-lh: 1.75;
+  --label-size: 11px; --label-weight: 500; --label-track: .32em;
+  --q-size: clamp(22px, 1.1rem + 1.2vw, 32px); --q-weight: 300;
+  --btn-radius: 999px; --card-radius: 999px 999px 20px 20px; --hero-h: auto; }
+[data-v="7"] { font-variant-numeric: lining-nums; }
+[data-v="7"] .hdr { padding-block: clamp(32px, 4.5vw, 60px) 0; }
+[data-v="7"] .nav { border-top: 0; margin-top: clamp(10px, 1.4vw, 18px); }
+[data-v="7"] .nav a { font-size: 12px; font-weight: 500; letter-spacing: .3em; }
+[data-v="7"] .hero-media { width: min(560px, 100% - 2 * var(--gutter)); margin: clamp(28px, 4vw, 56px) auto 0; background: none; overflow: visible; }
+[data-v="7"] .hero-media img { aspect-ratio: 4 / 5; height: auto; border-radius: 999px 999px 0 0; object-position: 52% 50%; }
+[data-v="7"] .cta { position: static; transform: none; display: flex; margin: clamp(32px, 4vw, 48px) auto 0; background: transparent; border-color: var(--ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+[data-v="7"] .btn-text { font-weight: 600; letter-spacing: .26em; font-size: 13px; }
+[data-v="7"] .card { border-top: 0; padding: clamp(80px, 9vw, 120px) clamp(24px, 4vw, 48px) clamp(36px, 4vw, 52px); background: var(--white); border-radius: var(--card-radius); }
+[data-v="7"] .about { --bg: var(--white); }
+[data-v="7"] .testimonials { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); }
+[data-v="7"] .loc { padding-top: clamp(72px, 8vw, 104px); }
+
+/* ---------- Phone ---------- */
+@media (max-width: 640px) {
+  .wm span { display: block; }
+  .nav { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8px; }
+  .nav a { justify-content: center; font-size: 11px; letter-spacing: 3px; }
+  .loc .btn { width: 100%; padding-inline: 16px; font-size: 13px; letter-spacing: 3px; }
+  .fwm { font-size: 14px; letter-spacing: 4px; margin-right: -4px; }
+  [data-v="1"] .top { padding-top: 118px; }
+  .hero-media img { object-position: 55% 30%; }
+  [data-v="3"] .hero-media img { aspect-ratio: 4 / 5; }
+  [data-v="6"] .h3::before, [data-v="6"] .h3::after { width: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.switching * { transition: none !important; }
+</style>
+</head>
+<body data-v="1">
+  <div class="top" id="top">
+    <header class="hdr">
+      <a class="wm" href="#top"><span>Suzanne Scott</span> <span>Skin Care</span></a>
+      <nav class="nav" aria-label="Main">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Client words</a>
+        <a href="#contact">Book &amp; contact</a>
+      </nav>
+    </header>
+    <div class="hero-media">
+      <img src="../images/suzanne-scott-skin-care-hero.jpg" alt="Black-and-white close-up of a woman's neck and collarbone in soft studio light" width="1338" height="764">
+      <a class="btn btn-text cta" href="#contact">Book now</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="sec intro" id="intro">
+      <div class="wrap stack">
+        <h1 class="label">Suzanne Scott Skin Care</h1>
+        <p class="tag">Restore balance and reconnect with your natural glow.</p>
+        <p class="text">Suzanne Scott Skin Care is a skincare practice offering holistic facials and lash and brow services in San Francisco and Marin. Esthetician Suzanne Scott has practiced for over 30 years. Her facials pair classic European techniques with connective tissue release and manual lymphatic drainage. Appointments run Monday, Wednesday and Saturday in San Francisco, and Thursday in San Rafael.</p>
+      </div>
+    </section>
+
+    <section class="sec services" id="services">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">Facials · Lash &amp; brow</p>
+          <h2 class="h2">Services</h2>
+          <a class="link btn-text" href="#contact">Book a treatment →</a>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <p class="label idx">01</p>
+            <h3 class="h3">Custom Holistic Facial</h3>
+            <p class="text">Each session begins with careful cleansing and gentle exfoliation, with extractions when needed. Massage therapies, including connective tissue release and manual lymphatic drainage, help the skin lift, sculpt and glow. More than a facial, it supports your skin’s innate intelligence, soothes the nervous system and restores balance.</p>
+            <dl class="prices">
+              <div><dt>60 minutes</dt><dd class="btn-text">$165</dd></div>
+              <div><dt>90 minutes</dt><dd class="btn-text">$225</dd></div>
+            </dl>
+          </article>
+          <article class="card">
+            <p class="label idx">02</p>
+            <h3 class="h3">Lash &amp; Brow</h3>
+            <p class="text">A gentle tint adds depth, definition and long-lasting color to your lashes and brows.</p>
+            <dl class="prices">
+              <div><dt>Brow wax or tweeze, 30 minutes</dt><dd class="btn-text">$40</dd></div>
+              <div><dt>Brow tint, 30 minutes</dt><dd class="btn-text">$30</dd></div>
+              <div><dt>Lash tint, 30 minutes</dt><dd class="btn-text">$35</dd></div>
+              <div><dt>Lash &amp; brow tint</dt><dd class="btn-text">$60</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec about" id="about">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">About</p>
+          <h2 class="h2">About Suzanne</h2>
+        </div>
+        <div class="text">
+          <p>I have practiced as an esthetician for over 30 years. Over that time, my work has grown into a holistic approach to skincare.</p>
+          <p>My treatments are restorative. They combine classic European techniques with intuitive, holistic rituals. Every facial is custom. I use connective tissue release and manual lymphatic drainage to help the skin lift and sculpt. The same work soothes the nervous system and restores balance.</p>
+          <p>I see clients in two places. In San Francisco, I work at Yelena’s Spa on Geary Street on Mondays, Wednesdays and Saturdays. In Marin, I work at Lise of Copenhagen in San Rafael on Thursdays.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec testimonials" id="testimonials">
+      <div class="wrap">
+        <h2 class="label">In clients’ words</h2>
+        <figure class="feat">
+          <blockquote><p>“I’ve been getting monthly facials from Suzanne for 16+ years and would follow her anywhere. Her space instantly invites relaxation and her healing hands and gentle touch always leave my skin feeling healthy and fresh. She is incredibly thoughtful about which products and procedures she offers, creating an individualized program that reflects her clients’ current needs. I have happily recommended her to many friends and will continue to do so!”</p></blockquote>
+          <figcaption class="btn-text">— Camilla F.</figcaption>
+        </figure>
+        <div class="qgrid">
+          <figure>
+            <blockquote><p>“Suzanne Scott is a wonderful esthetician – My skin looks great as a result of Suzanne’s treatments, and when I do have the occasional specific concern, she always knows exactly how to remedy things.”</p></blockquote>
+            <figcaption class="btn-text">— Sarah N.</figcaption>
+          </figure>
+          <figure>
+            <blockquote><p>“Suzanne is an amazing esthetician and she really knows skin and skin care. She is well versed on the latest treatments and always tries to keep up to date with the best and latest skin care. I highly recommend her!”</p></blockquote>
+            <figcaption class="btn-text">— Stacy M.</figcaption>
+          </figure>
+          <figure>
+            <blockquote><p>“Suzanne is fabulous. My skin looks healthy and rejuvenated. I feel very lucky to have found Suzanne. I highly recommend her to anyone interested in maintaining and improving their skin regime.”</p></blockquote>
+            <figcaption class="btn-text">— Theresa V.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec contact" id="contact">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="label">San Francisco · Marin</p>
+          <h2 class="h2">Book &amp; contact</h2>
+          <p class="text">Choose the location that suits you, or email with any questions before your first visit.</p>
+        </div>
+        <div class="locs">
+          <div class="loc">
+            <h3 class="label">San Francisco</h3>
+            <div class="text">
+              <p class="days">Monday, Wednesday and Saturday</p>
+              <address>166 Geary Street, Suite 1006<br>San Francisco, CA 94108<br>at Yelena’s Spa</address>
+            </div>
+            <a class="btn btn-text" href="mailto:suzannelscott@yahoo.com?subject=Appointment%20request%20-%20San%20Francisco">Book in San Francisco</a>
+          </div>
+          <div class="loc">
+            <h3 class="label">Marin</h3>
+            <div class="text">
+              <p class="days">Thursday</p>
+              <address>30 H Street<br>San Rafael, CA 94901<br>at Lise of Copenhagen</address>
+            </div>
+            <a class="btn btn-text" href="mailto:suzannelscott@yahoo.com?subject=Appointment%20request%20-%20Marin">Book in Marin</a>
+          </div>
+        </div>
+        <dl class="cdet">
+          <div><dt class="label">Email</dt><dd><a href="mailto:suzannelscott@yahoo.com">Email Suzanne</a><span class="muted">suzannelscott@yahoo.com</span></dd></div>
+          <div><dt class="label">Phone</dt><dd><a href="tel:+14154973983">(415) 497-3983</a></dd></div>
+        </dl>
+        <div class="policy">
+          <h3 class="h3">Cancellation policy</h3>
+          <p class="text">I understand that life happens and plans change. If you need to cancel or reschedule, please let me know at least 24 hours in advance. Cancellations made with less than 24 hours’ notice are charged 50% of the total service cost. Thank you for understanding.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p class="fwm">Suzanne Scott Skin Care</p>
+      <p>San Francisco &amp; Marin</p>
+      <p><a href="mailto:suzannelscott@yahoo.com">suzannelscott@yahoo.com</a> · <a href="tel:+14154973983">(415) 497-3983</a></p>
+      <p><small>© 2026 Suzanne Scott Skin Care</small></p>
+    </div>
+  </footer>
+
+  <div class="switch" role="group" aria-label="Design version">
+    <button type="button" class="prev" aria-label="Previous version">‹</button>
+    <span class="num" aria-live="polite">1</span>
+    <button type="button" class="next" aria-label="Next version">›</button>
+  </div>
+
+<script>
+(function () {
+  var N = 7, body = document.body, num = document.querySelector('.switch .num');
+  function show(v) {
+    v = ((v - 1 + N) % N) + 1;
+    body.classList.add('switching');   // switch instantly, without link color fades
+    body.setAttribute('data-v', v);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { body.classList.remove('switching'); }); });
+    num.textContent = v;
+    try { history.replaceState(null, '', '#v' + v); } catch (e) {}
+  }
+  var m = /^#v([1-7])$/.exec(location.hash);
+  show(m ? +m[1] : 1);
+  function step(d) { show(+body.getAttribute('data-v') + d); }
+
+  document.querySelector('.switch .prev').addEventListener('click', function () { step(-1); });
+  document.querySelector('.switch .next').addEventListener('click', function () { step(1); });
+  addEventListener('keydown', function (e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'ArrowRight') { step(1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft') { step(-1); e.preventDefault(); }
+  });
+
+  // Phones: a clear horizontal swipe switches versions; vertical scrolling is left alone.
+  var sx = 0, sy = 0;
+  addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 70 && Math.abs(dx) > 2 * Math.abs(dy)) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

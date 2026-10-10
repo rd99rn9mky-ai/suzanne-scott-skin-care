@@ -1,4 +1,4 @@
-# Suzanne Scott Skin Care — https://suzannescottskincare.com/
+# Suzanne Scott Skincare — https://suzannescottskincare.com/
 # Every search engine and AI assistant may crawl the whole site.
 
 User-agent: *

@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
+/* Suzanne Scott Skin Care — Direction 1, version 4: Architectural (Montserrat).
+   Saved from explorations/direction-1-variants.html. Pairs with that page's markup (classes .top .hdr .wm .nav .hero-media .sec .card .prices .loc .foot). */
+
+:root {
+  --ink: #141414; --white: #FFFFFF; --paper: #F4F4F2;
+  --grey-700: #4A4A48; --grey-600: #666664; --grey-400: #A6A6A3; --grey-300: #8C8C8A; --rule: #D4D4D0;
+  --glass: rgba(255,255,255,0.72); --glass-border: rgba(20,20,20,0.12);
+  --gutter: clamp(20px, 5vw, 48px);
+  color-scheme: light;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+h1, h2, h3, p, figure, blockquote, dl, dd, address { margin: 0; }
+address { font-style: normal; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: color .2s, border-color .2s, background-color .2s; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* ---------- Version tokens (defaults = version 1, Jost refined) ---------- */
+body {
+  --f-display: "Jost", Helvetica, sans-serif;
+  --f-body: "Jost", Helvetica, sans-serif;
+  --f-label: "Jost", Helvetica, sans-serif;
+  --wm-font: var(--f-display); --wm-size: clamp(21px, 1rem + 2.6vw, 52px); --wm-track: clamp(4px, .62vw, 9px); --wm-weight: 400; --wm-style: normal;
+  --tag-font: var(--f-display); --tag-size: clamp(32px, 1.6rem + 2vw, 52px); --tag-weight: 400; --tag-style: normal; --tag-track: 0;
+  --h-font: var(--f-display); --h-size: clamp(32px, 2.2rem + .9vw, 44px); --h-weight: 400; --h-style: normal; --h-case: none; --h-track: .25px;
+  --t-font: var(--f-display); --t-size: clamp(24px, 1.4rem + .4vw, 28px); --t-weight: 400; --t-track: 1px; --t-style: normal;
+  --label-size: 13px; --label-weight: 500; --label-track: 4px;
+  --body-size: clamp(17px, 1.05rem + .2vw, 19px); --body-weight: 300; --body-lh: 1.65;
+  --q-font: var(--f-display); --q-size: clamp(22px, 1.1rem + 1.3vw, 32px); --q-weight: 300; --q-style: normal;
+  --btn-font: var(--f-label); --btn-radius: 16px; --card-radius: 20px;
+  --pad: clamp(72px, 9vw, 120px);
+  --hero-h: clamp(440px, 52vw, 740px);
+  margin: 0; overflow-x: hidden;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--f-body); font-weight: var(--body-weight); font-size: var(--body-size); line-height: var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Section color themes. Every section reads --bg/--fg/etc; versions flip sections to white or dark. */
+.sec, .top, .foot { --bg: var(--paper); --fg: var(--ink); --muted: var(--grey-600); --text: var(--grey-700); --line: var(--rule); --strong: var(--ink); --card: var(--white); --card-line: var(--rule);
+  background: var(--bg); color: var(--fg); }
+
+/* ---------- Shared type ---------- */
+.label { font-family: var(--f-label); font-size: var(--label-size); font-weight: var(--label-weight); letter-spacing: var(--label-track); text-transform: uppercase; line-height: 1.5; color: var(--muted); }
+.h2 { font-family: var(--h-font); font-size: var(--h-size); font-weight: var(--h-weight); font-style: var(--h-style); text-transform: var(--h-case); letter-spacing: var(--h-track); line-height: 1.15; text-wrap: balance; }
+.h3 { font-family: var(--t-font); font-size: var(--t-size); font-weight: var(--t-weight); font-style: var(--t-style); letter-spacing: var(--t-track); line-height: 1.2; }
+.text { color: var(--text); max-width: 680px; margin-inline: auto; }
+.text p + p { margin-top: 1.1em; }
+.btn-text { font-family: var(--btn-font); font-size: 14px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; line-height: 1.3; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 16px 40px 16px 44px; border: 1px solid var(--strong); border-radius: var(--btn-radius); color: var(--fg); text-decoration: none; text-align: center; background: transparent; }
+.btn:hover { color: var(--muted); border-color: var(--muted); }
+.link { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 7px; }
+
+/* ---------- Layout ---------- */
+.wrap { width: min(1040px, 100% - 2 * var(--gutter)); margin-inline: auto; text-align: center; }
+.sec { padding-block: var(--pad); }
+.stack { display: grid; justify-items: center; gap: 16px; }
+.sec-head { display: grid; justify-items: center; gap: 16px; margin-bottom: clamp(40px, 5vw, 64px); }
+
+/* Header + hero */
+.top { position: relative; }
+.hdr { position: relative; z-index: 5; text-align: center; padding: clamp(20px, 3vw, 36px) var(--gutter) 6px; background: var(--bg); }
+.wm { display: inline-block; font-family: var(--wm-font); font-size: var(--wm-size); font-weight: var(--wm-weight); font-style: var(--wm-style); letter-spacing: var(--wm-track); margin-right: calc(-1 * var(--wm-track)); text-transform: uppercase; line-height: 1.05; text-decoration: none; }
+.wm span { white-space: nowrap; }
+.nav { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 48px; margin-top: clamp(12px, 1.8vw, 22px); padding-top: 6px; border-top: 1px solid var(--line); }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--f-label); font-size: 13px; font-weight: 400; letter-spacing: 4px; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.nav a:hover, .wm:hover { color: var(--muted); }
+
+.hero-media { position: relative; height: var(--hero-h); overflow: hidden; background: var(--grey-300); }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 40%; filter: grayscale(1); }
+.cta { position: absolute; left: 50%; bottom: clamp(28px, 5vw, 72px); transform: translateX(-50%); width: min(240px, 100% - 2 * var(--gutter)); padding-inline: 20px;
+  background: var(--glass); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-color: var(--glass-border); color: var(--ink); }
+.cta:hover { background: var(--white); color: var(--ink); border-color: var(--glass-border); }
+
+/* Intro */
+.tag { font-family: var(--tag-font); font-size: var(--tag-size); font-weight: var(--tag-weight); font-style: var(--tag-style); letter-spacing: var(--tag-track); line-height: 1.15; max-width: 860px; text-wrap: balance; }
+.intro .text { margin-top: 16px; }
+
+/* Services */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 64px 48px; }
+.card { display: grid; justify-items: center; align-content: start; gap: 16px; padding-top: 28px; border-top: 1px solid var(--strong); min-width: 0; }
+.prices { width: min(440px, 100%); margin-top: 12px; border-bottom: 1px solid var(--line); }
+.prices > div { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-block: 13px; border-top: 1px solid var(--line); text-align: left; }
+.prices dt { color: var(--text); font-size: .94em; line-height: 1.4; }
+.prices dd { flex: none; letter-spacing: 2px; font-variant-numeric: tabular-nums; }
+
+/* Testimonials */
+.feat { max-width: 980px; margin: 32px auto 0; }
+.feat p { font-family: var(--q-font); font-size: var(--q-size); font-weight: var(--q-weight); font-style: var(--q-style); line-height: 1.5; color: var(--fg); text-wrap: pretty; }
+figcaption { margin-top: 24px; color: var(--muted); }
+.qgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 48px; margin-top: clamp(56px, 8vw, 96px); }
+.qgrid figure { padding-top: 28px; border-top: 1px solid var(--line); min-width: 0; }
+.qgrid p { color: var(--fg); font-size: .92em; }
+
+/* Contact */
+.locs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: clamp(32px, 4vw, 48px); }
+.loc { display: grid; justify-items: center; align-content: start; gap: 18px; padding: clamp(28px, 4vw, 48px); background: var(--card); border: 1px solid var(--card-line); border-radius: var(--card-radius); min-width: 0; }
+.loc .label { color: var(--fg); }
+.loc .text { display: grid; gap: 4px; }
+.loc .days { color: var(--fg); }
+.loc .btn { margin-top: 8px; }
+.cdet { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 32px; margin-top: clamp(48px, 6vw, 72px); padding-top: 32px; border-top: 1px solid var(--line); }
+.cdet > div { display: grid; gap: 8px; justify-items: center; }
+.cdet dd a { display: inline-flex; align-items: center; min-height: 44px; }
+.cdet .muted { display: block; color: var(--muted); font-size: .88em; overflow-wrap: anywhere; }
+.policy { display: grid; gap: 16px; margin-top: clamp(48px, 6vw, 72px); }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); padding-block: 64px; }
+.foot .wrap { display: grid; justify-items: center; gap: 14px; }
+.fwm { font-family: var(--wm-font); font-size: 18px; letter-spacing: 6px; margin-right: -6px; text-transform: uppercase; line-height: 1.2; }
+.foot p { color: var(--muted); font-size: 15px; }
+.foot a { display: inline-flex; align-items: center; min-height: 44px; }
+
+
+/* ======================================================================
+   4 · Architectural sans — Montserrat, wide-tracked caps headlines, alternating black/white bands, boxed grid.
+   ====================================================================== */
+body { --f-display: "Montserrat", Helvetica, sans-serif; --f-body: "Montserrat", Helvetica, sans-serif; --f-label: "Montserrat", Helvetica, sans-serif;
+  --wm-size: clamp(17px, .8rem + 1.8vw, 34px); --wm-track: clamp(6px, 1vw, 14px); --wm-weight: 300;
+  --tag-size: clamp(22px, 1rem + 1.8vw, 38px); --tag-weight: 300; --tag-track: clamp(2px, .4vw, 6px);
+  --h-size: clamp(22px, 1rem + 1.4vw, 32px); --h-weight: 300; --h-case: uppercase; --h-track: clamp(5px, .7vw, 10px);
+  --t-size: clamp(16px, .9rem + .3vw, 19px); --t-weight: 500; --t-track: 4px;
+  --body-size: clamp(15px, .9rem + .2vw, 17px); --body-lh: 1.85;
+  --label-size: 11px; --label-track: 5px;
+  --q-size: clamp(19px, 1rem + .9vw, 26px); --q-weight: 300;
+  --btn-radius: 0; --card-radius: 0; --hero-h: clamp(460px, 56vw, 800px); }
+.top { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --line: var(--grey-700); }
+.hdr { padding-block: 22px 4px; }
+.h3 { text-transform: uppercase; }
+.tag { text-transform: uppercase; }
+.cta { border-radius: 0; background: var(--ink); color: var(--paper); border-color: var(--ink); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.cta:hover { background: var(--grey-700); color: var(--paper); border-color: var(--grey-700); }
+.intro, .about, .contact { --bg: var(--white); }
+.services, .testimonials, .foot { --bg: var(--ink); --fg: var(--paper); --muted: var(--grey-400); --text: var(--paper); --line: var(--grey-700); --strong: var(--paper); --card: transparent; --card-line: var(--grey-700); }
+.cards { gap: 0; border: 1px solid var(--grey-700); }
+.card { border-top: 0; padding: clamp(32px, 4vw, 56px) clamp(20px, 3vw, 40px); }
+.card + .card { border-left: 1px solid var(--grey-700); }
+@media (max-width: 860px) { .card + .card { border-left: 0; border-top: 1px solid var(--grey-700); } }
+.locs { gap: 0; border: 1px solid var(--ink); }
+.loc { border: 0; background: var(--white); }
+.loc + .loc { border-left: 1px solid var(--ink); }
+@media (max-width: 820px) { .loc + .loc { border-left: 0; border-top: 1px solid var(--ink); } }
+.prices dt { font-size: .9em; }
+
+
+
+/* ---------- Phone ---------- */
+@media (max-width: 640px) {
+  .wm span { display: block; }
+  .nav { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8px; }
+  .nav a { justify-content: center; font-size: 11px; letter-spacing: 3px; }
+  .loc .btn { width: 100%; padding-inline: 16px; font-size: 13px; letter-spacing: 3px; }
+  .fwm { font-size: 14px; letter-spacing: 4px; margin-right: -4px; }
+  .hero-media img { object-position: 55% 30%; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+.skip-link { position: absolute; left: 16px; top: -100px; z-index: 20; padding: 14px 20px; background: var(--white); color: var(--ink); border: 1px solid var(--ink); text-decoration: none; }
+.skip-link:focus { top: 16px; }
