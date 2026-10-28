@@ -159,9 +159,8 @@ body { --f-display: "Red Hat Display", Helvetica, sans-serif; --f-body: "Red Hat
 .nav a:last-child { margin-right: -.28em; }   /* cancel trailing letter-spacing so the group centers optically */
 .wm { word-spacing: .7em; }                    /* equal, wide gaps: Suzanne · Scott · Skincare */
 .hero-media img { object-position: 58% 45%; }
-/* Show the photo's full height: it fills the hero top to bottom at its own proportions and is centered.
-   On wide screens the sides fall back to white; on narrow ones the sides crop off-screen. */
-.hero-media img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: auto; max-width: none; aspect-ratio: 2400 / 1762; }
+/* The photo fills the hero top to bottom and is centered, as wide as the nav box (a little of its top and bottom crops off). */
+.hero-media img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: min(var(--box-w), 100%); max-width: none; object-fit: cover; }
 .hero-media { --fade-x: 22%; }   /* side fade sized to the photo, not the window */
 .cta { border-radius: var(--box-radius); }   /* same corners as the nav glass */
 /* Larger, more solid hero button. */
@@ -308,7 +307,7 @@ body { --wm-w: calc(var(--wm-size) * 22.088); --nav-ext: clamp(24px, 4vw, 72px);
   /* Photo sits below the header (no overlap) and fades only at its bottom edge. */
   /* Tall, edge-to-edge photo: fills the first screen below the 72px header, leaving ~96px so only the first line or two of the intro shows. Sides crop off-screen. */
   .hero-media { --nav-h: 0px; margin-top: 0; height: calc(100vh - 168px); height: calc(100svh - 168px); min-height: 420px; }
-  .hero-media img { object-position: 54% 35%; }
+  .hero-media img { object-position: 54% 35%; width: auto; aspect-ratio: 2400 / 1762; }   /* full photo height; sides crop off-screen */
   .cta { bottom: clamp(88px, 14svh, 132px); }   /* lifted clear of the bottom fade */
   .hero-media img { -webkit-mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,1.00) calc(100% - var(--fade-y)), rgba(0,0,0,0.96) calc(100% - var(--fade-y) * 0.7), rgba(0,0,0,0.89) calc(100% - var(--fade-y) * 0.52), rgba(0,0,0,0.80) calc(100% - var(--fade-y) * 0.38), rgba(0,0,0,0.66) calc(100% - var(--fade-y) * 0.26), rgba(0,0,0,0.48) calc(100% - var(--fade-y) * 0.16), rgba(0,0,0,0.28) calc(100% - var(--fade-y) * 0.08), rgba(0,0,0,0.00) 100%); mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,1.00) calc(100% - var(--fade-y)), rgba(0,0,0,0.96) calc(100% - var(--fade-y) * 0.7), rgba(0,0,0,0.89) calc(100% - var(--fade-y) * 0.52), rgba(0,0,0,0.80) calc(100% - var(--fade-y) * 0.38), rgba(0,0,0,0.66) calc(100% - var(--fade-y) * 0.26), rgba(0,0,0,0.48) calc(100% - var(--fade-y) * 0.16), rgba(0,0,0,0.28) calc(100% - var(--fade-y) * 0.08), rgba(0,0,0,0.00) 100%); }
 
