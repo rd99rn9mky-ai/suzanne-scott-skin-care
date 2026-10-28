@@ -162,6 +162,10 @@ body { --f-display: "Red Hat Display", Helvetica, sans-serif; --f-body: "Red Hat
 /* The photo fills the hero top to bottom and is centered, as wide as the nav box (a little of its top and bottom crops off). */
 .hero-media img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); height: 100%; width: min(var(--box-w), 100%); max-width: none; object-fit: cover; }
 .hero-media { --fade-x: 22%; }   /* side fade sized to the photo, not the window */
+/* Hero fills the screen down to just above the bio's first line (header ~116px + gap + one line ~ 180px),
+   but never taller than the photo's own proportions at the nav-box width, so the photo is never zoomed in. */
+.hero-media { height: clamp(300px, calc(100vh - 180px), calc(min(var(--box-w), 100vw) / 1.362));
+              height: clamp(300px, calc(100svh - 180px), calc(min(var(--box-w), 100vw) / 1.362)); }
 .cta { border-radius: var(--box-radius); }   /* same corners as the nav glass */
 /* Larger, more solid hero button. */
 .cta { width: min(380px, 100% - 2 * var(--gutter)); min-height: 64px; font-size: 16px; }
@@ -305,8 +309,8 @@ body { --wm-w: calc(var(--wm-size) * 22.088); --nav-ext: clamp(24px, 4vw, 72px);
   .nav a:last-child { margin-right: 0; }
 
   /* Photo sits below the header (no overlap) and fades only at its bottom edge. */
-  /* Tall, edge-to-edge photo: fills the first screen below the 72px header, leaving ~96px so only the first line or two of the intro shows. Sides crop off-screen. */
-  .hero-media { --nav-h: 0px; margin-top: 0; height: calc(100vh - 168px); height: calc(100svh - 168px); min-height: 420px; }
+  /* Tall, edge-to-edge photo: fills the first screen below the 72px header, leaving ~128px so only the first line of the intro shows. Sides crop off-screen. */
+  .hero-media { --nav-h: 0px; margin-top: 0; height: calc(100vh - 128px); height: calc(100svh - 128px); min-height: 420px; }
   .hero-media img { object-position: 54% 35%; width: auto; aspect-ratio: 2400 / 1762; }   /* full photo height; sides crop off-screen */
   .cta { bottom: clamp(88px, 14svh, 132px); }   /* lifted clear of the bottom fade */
   .hero-media img { -webkit-mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,1.00) calc(100% - var(--fade-y)), rgba(0,0,0,0.96) calc(100% - var(--fade-y) * 0.7), rgba(0,0,0,0.89) calc(100% - var(--fade-y) * 0.52), rgba(0,0,0,0.80) calc(100% - var(--fade-y) * 0.38), rgba(0,0,0,0.66) calc(100% - var(--fade-y) * 0.26), rgba(0,0,0,0.48) calc(100% - var(--fade-y) * 0.16), rgba(0,0,0,0.28) calc(100% - var(--fade-y) * 0.08), rgba(0,0,0,0.00) 100%); mask-image: linear-gradient(to bottom, #000 0, rgba(0,0,0,1.00) calc(100% - var(--fade-y)), rgba(0,0,0,0.96) calc(100% - var(--fade-y) * 0.7), rgba(0,0,0,0.89) calc(100% - var(--fade-y) * 0.52), rgba(0,0,0,0.80) calc(100% - var(--fade-y) * 0.38), rgba(0,0,0,0.66) calc(100% - var(--fade-y) * 0.26), rgba(0,0,0,0.48) calc(100% - var(--fade-y) * 0.16), rgba(0,0,0,0.28) calc(100% - var(--fade-y) * 0.08), rgba(0,0,0,0.00) 100%); }
